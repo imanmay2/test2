@@ -12,9 +12,9 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
 const connectMongo = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
-    console.log('✅ MongoDB Connected (Task Management)');
+    console.log('MongoDB Connected (Task Management)');
   } catch (err) {
-    console.error('❌ MongoDB Connection Error:', err.message);
+    console.error('MongoDB Connection Error:', err.message);
     process.exit(1);
   }
 };
