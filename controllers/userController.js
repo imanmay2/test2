@@ -16,14 +16,14 @@ exports.login = async (req, res, next) => {
         const { user, token } = await UserService.loginUser(email, password);
         res.status(200).json({ user, token });
     } catch (error) {
-        res.status(401).json({ message: error.message });
+        next(error);
     }
 };
 
 exports.getProfile = async (req, res, next) => {
     try {
-        // req.user is populated by the auth middleware
-        res.status(200).json(req.user);
+        const user = await UserService.getProfile(req.user.id);
+        res.status(200).json(user);
     } catch (error) {
         next(error);
     }

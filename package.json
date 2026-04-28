@@ -5,9 +5,13 @@
   "license": "ISC",
   "author": "",
   "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "check": "node --check server.js && node --check config/db.js && node --check controllers/userController.js && node --check controllers/taskController.js && node --check controllers/categoryController.js && node --check controllers/tagController.js && node --check middleware/auth.js && node --check middleware/error.js && node --check middleware/validators.js && node --check models/index.js && node --check models/User.js && node --check models/Task.js && node --check models/Category.js && node --check models/Tag.js && node --check routes/userRoutes.js && node --check routes/taskRoutes.js && node --check routes/categoryRoutes.js && node --check routes/tagRoutes.js && node --check services/userService.js && node --check services/taskService.js && node --check services/categoryService.js && node --check services/tagService.js && node --check services/reminderService.js && node --check services/webhookService.js",
+    "test": "npm run check",
     "start": "node server.js"
   },
   "dependencies": {
@@ -16,6 +20,7 @@
     "express": "^5.2.1",
     "joi": "^18.1.2",
     "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.5.0",
     "pg": "^8.20.0",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.8"
